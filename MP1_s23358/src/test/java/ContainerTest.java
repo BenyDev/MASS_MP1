@@ -2,10 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sia.Container;
 import sia.Item;
-import sia.validation.ToLowValueException;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,14 +43,14 @@ public class ContainerTest {
     }
 
     @Test
-    void setIdTransportTest(){
-        c1.setIdTransport(null);
-        assertEquals("Empty", c1.getIdTransport());
-        System.out.println(c1.getIdTransport());
+    void setIdClientTest(){
+        c1.setIdClient(null);
+        assertEquals("Empty", c1.getIdClient());
+        System.out.println(c1.getIdClient());
 
-        c1.setIdTransport("1ID");
-        assertEquals("1ID", c1.getIdTransport());
-        System.out.println(c1.getIdTransport());
+        c1.setIdClient("1ID");
+        assertEquals("1ID", c1.getIdClient());
+        System.out.println(c1.getIdClient());
     }
 
     @Test
@@ -62,7 +60,11 @@ public class ContainerTest {
         assertThrows(IllegalArgumentException.class, () -> {c1.setContent(Arrays.asList(new Item("Lodówka",23d)));});
         System.out.println("After test: " +c1.getContent());
     }
-
+    @Test
+    void setManufacturerTest(){
+        assertThrows(IllegalArgumentException.class, () -> {c1.setManufactureDate(LocalDateTime.now().plusNanos(20) );});
+        assertThrows(IllegalArgumentException.class, () -> {c1.setManufactureDate(null );});
+    }
 
 }
 

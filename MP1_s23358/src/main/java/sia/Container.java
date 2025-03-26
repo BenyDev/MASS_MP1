@@ -1,8 +1,5 @@
 package sia;
 
-import sia.validation.ToLowValueException;
-import sia.validation.Validator;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class Container {
     /***
      * opcjonalne
      * */
-    private String idTransport;
+    private String idClient;
 
 
     /***
@@ -44,12 +41,12 @@ public class Container {
      * */
     private LocalDateTime manufactureDate;
 
-    public Container(int width, int height, int length, double netWeight, String idTransport, List<Item> content, LocalDateTime manufactureDate) {
+    public Container(int width, int height, int length, double netWeight, String idClient, List<Item> content, LocalDateTime manufactureDate) {
         this.setWidth(width);
         this.height = height;
         this.length = length;
         this.netWeight = netWeight;
-        this.idTransport = idTransport;
+        this.idClient = idClient;
         this.content = content;
         this.manufactureDate = manufactureDate;
     }
@@ -118,22 +115,22 @@ public class Container {
         this.netWeight = netWeight;
     }
 
-    public String getIdTransport() {
+    public String getIdClient() {
 
-        if(idTransport == null) {
+        if(idClient == null) {
             String nullVal = "Empty";
             return nullVal;
         }
-        return idTransport;
+        return idClient;
     }
 
-    public void setIdTransport(String idTransport) {
+    public void setIdClient(String idClient) {
 
-        if(idTransport == null || !idTransport.isEmpty()) {
-            this.idTransport = null;
+        if(idClient == null || !idClient.isEmpty()) {
+            this.idClient = null;
         }
 
-        this.idTransport = idTransport;
+        this.idClient = idClient;
     }
 
     public List<Item> getContent() {
@@ -159,6 +156,13 @@ public class Container {
     }
 
     public void setManufactureDate(LocalDateTime manufactureDate) {
+
+        if(manufactureDate == null  ) {
+            throw new IllegalArgumentException("Manufacture date cannot be null");
+        }
+        if(!manufactureDate.isBefore(LocalDateTime.now())){
+            throw new IllegalArgumentException("Manufacture date must be before now");
+        }
         this.manufactureDate = manufactureDate;
     }
 
@@ -169,7 +173,7 @@ public class Container {
                 ", height=" + height +
                 ", length=" + length +
                 ", netWeight=" + netWeight +
-                ", idTransport='" + idTransport + '\'' +
+                ", idTransport='" + idClient + '\'' +
                 ", content=" + content +
                 ", manufactureDate=" + manufactureDate +
                 '}';
