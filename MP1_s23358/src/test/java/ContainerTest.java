@@ -61,7 +61,7 @@ public class ContainerTest {
         System.out.println("After test: " +c1.getContent());
     }
     @Test
-    void setManufacturerTest(){
+    void setManufactureDateTest(){
         assertThrows(IllegalArgumentException.class, () -> {c1.setManufactureDate(LocalDateTime.now().plusNanos(20) );});
         assertThrows(IllegalArgumentException.class, () -> {c1.setManufactureDate(null );});
     }
