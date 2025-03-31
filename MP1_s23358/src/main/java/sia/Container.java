@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class Container implements Serializable {
 
     private static List<Container> extent = new ArrayList<>();
-    private static String producent = "PROCONTAINERS";
+    private static String producer = "PROCONTAINERS";
     private static final int MIN_SIZE_MATERIALS = 1;
     private int width;
     private int height;
@@ -80,7 +80,7 @@ public class Container implements Serializable {
         }
     }
 
-    public static List<Container> filterContainerByMaterial(String material) {
+    public static List<Container> filterContainersByMaterial(String material) {
 
         if(material == null){
             throw new IllegalArgumentException("material is null");
@@ -119,12 +119,12 @@ public class Container implements Serializable {
 
 
 
-    public static String getProducent() {
-        return producent;
+    public static String getProducer() {
+        return producer;
     }
 
-    public static void setProducent(String producent) {
-        Container.producent = producent;
+    public static void setProducer(String producer) {
+        Container.producer = producer;
     }
 
     public int getWidth() {

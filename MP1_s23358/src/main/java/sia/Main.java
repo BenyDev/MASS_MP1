@@ -78,7 +78,7 @@ public class Main {
 
         String filter = "Steel";
         System.out.println("\n============CONTAINERS: Looking for:  " + filter + "=================\n");
-        List<Container> filteredContainers = Container.filterContainerByMaterial(filter);
+        List<Container> filteredContainers = Container.filterContainersByMaterial(filter);
         for (Container c : filteredContainers) {
             System.out.println(c);
         }

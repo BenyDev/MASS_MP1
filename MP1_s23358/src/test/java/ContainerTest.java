@@ -49,12 +49,12 @@ public class ContainerTest {
     void testFilterExtendByMaterials(){
         String material = "a";
 
-        List<Container> containers = Container.filterContainerByMaterial(material);
+        List<Container> containers = Container.filterContainersByMaterial(material);
         for(Container c : containers){
             System.out.println(c);
         }
-        assertThrows(IllegalArgumentException.class, ()-> {Container.filterContainerByMaterial(null);});
-        assertThrows(IllegalArgumentException.class, ()-> {Container.filterContainerByMaterial("");});
+        assertThrows(IllegalArgumentException.class, ()-> {Container.filterContainersByMaterial(null);});
+        assertThrows(IllegalArgumentException.class, ()-> {Container.filterContainersByMaterial("");});
         System.out.println(containers);
     }
 
